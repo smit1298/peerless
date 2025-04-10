@@ -3,18 +3,23 @@ import Peerless from "../assets/Svg/peerless.svg";
 import Info from "../assets/Svg/info-circle.svg";
 import Logout from "../assets/Svg/logout.svg";
 import { SideBarLinks } from "./constants";
+import { Link } from "react-router-dom";
 
-const SidebarItem = ({ name, isActive, src }) => (
-  <div
-    className={`px-6 py-3 text-sm font-medium cursor-pointer rounded-md mx-3 transition-colors duration-200 ${
-      isActive ? "bg-[#A93636] text-white" : "text-white hover:bg-gray-800"
-    }`}
-  >
-    <div className="flex items-center gap-[25px]">
-      <img src={src} alt={name} />
-      <p className="text-[14px]">{name}</p>
+const SidebarItem = ({ name, isActive, src, to }) => (
+  <Link to={to}>
+    {" "}
+    {/* Wrap the item in a Link */}
+    <div
+      className={`px-6 py-3 text-sm font-medium cursor-pointer rounded-md mx-3 transition-colors duration-200 ${
+        isActive ? "bg-[#A93636] text-white" : "text-white hover:bg-green-700"
+      }`}
+    >
+      <div className="flex items-center gap-[25px]">
+        <img src={src} alt={name} />
+        <p className="text-[14px]">{name}</p>
+      </div>
     </div>
-  </div>
+  </Link>
 );
 
 const Sidebar = () => {
@@ -28,6 +33,7 @@ const Sidebar = () => {
               key={item.text}
               src={item.src}
               name={item.text}
+              to={item.to}
               isActive={idx === 0}
             />
           ))}
