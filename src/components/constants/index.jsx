@@ -18,6 +18,7 @@ export const SideBarLinks = [
     src: Nintendo,
     text: "Nintendo",
     href: "dashboard",
+    to: "/dashboard/nintendo",
     id: 1
   },
   {
